@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">BT Gamepad</string>
+    <string name="status_initialising">Initialising…</string>
+    <string name="status_waiting">Waiting for host to connect…</string>
+    <string name="status_connected">Connected</string>
+    <string name="status_disconnected">Disconnected</string>
+</resources>

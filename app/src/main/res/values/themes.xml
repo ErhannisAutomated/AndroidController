@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.AndroidController" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/btn_a</item>
+        <item name="colorPrimaryVariant">@color/surface</item>
+        <item name="colorOnPrimary">@color/text_primary</item>
+        <item name="android:windowBackground">@color/bg_dark</item>
+        <item name="android:statusBarColor">@color/bg_dark</item>
+        <item name="android:navigationBarColor">@color/bg_dark</item>
+    </style>
+
+    <!-- ── Button base ──────────────────────────────────────────────────── -->
+
+    <style name="Widget.AndroidController.ButtonBase" parent="Widget.MaterialComponents.Button">
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:stateListAnimator">@null</item>
+        <item name="android:elevation">4dp</item>
+    </style>
+
+    <!-- Face button: round, coloured -->
+    <style name="Widget.AndroidController.FaceButton" parent="Widget.AndroidController.ButtonBase">
+        <item name="android:textSize">18sp</item>
+        <item name="cornerRadius">30dp</item>
+    </style>
+
+    <!-- D-pad button: square-ish, dark blue -->
+    <style name="Widget.AndroidController.DpadButton" parent="Widget.AndroidController.ButtonBase">
+        <item name="android:backgroundTint">@color/btn_dpad</item>
+        <item name="android:textSize">18sp</item>
+        <item name="cornerRadius">4dp</item>
+    </style>
+
+    <!-- Shoulder / bumper button -->
+    <style name="Widget.AndroidController.ShoulderButton" parent="Widget.AndroidController.ButtonBase">
+        <item name="android:backgroundTint">@color/btn_shoulder</item>
+        <item name="android:textSize">14sp</item>
+        <item name="cornerRadius">6dp</item>
+    </style>
+
+    <!-- Trigger button (larger, darker) -->
+    <style name="Widget.AndroidController.TriggerButton" parent="Widget.AndroidController.ButtonBase">
+        <item name="android:backgroundTint">@color/btn_trigger</item>
+        <item name="android:textSize">14sp</item>
+        <item name="cornerRadius">6dp</item>
+    </style>
+
+    <!-- Menu / centre button (Back, Start) -->
+    <style name="Widget.AndroidController.MenuButton" parent="Widget.AndroidController.ButtonBase">
+        <item name="android:backgroundTint">@color/btn_menu</item>
+        <item name="android:textSize">14sp</item>
+        <item name="cornerRadius">18dp</item>
+    </style>
+
+</resources>

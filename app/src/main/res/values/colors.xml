@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Background / surface -->
+    <color name="bg_dark">#1A1A2E</color>
+    <color name="surface">#16213E</color>
+    <color name="dpad_center">#0F3460</color>
+
+    <!-- Text -->
+    <color name="text_primary">#E0E0E0</color>
+    <color name="text_secondary">#9E9E9E</color>
+
+    <!-- Face buttons (Xbox colours) -->
+    <color name="btn_a">#4CAF50</color>  <!-- green  -->
+    <color name="btn_b">#F44336</color>  <!-- red    -->
+    <color name="btn_x">#2196F3</color>  <!-- blue   -->
+    <color name="btn_y">#FFC107</color>  <!-- yellow -->
+
+    <!-- Shoulder / trigger buttons -->
+    <color name="btn_shoulder">#0F3460</color>
+    <color name="btn_trigger">#0A2647</color>
+
+    <!-- D-pad -->
+    <color name="btn_dpad">#0F3460</color>
+
+    <!-- Menu buttons (Back / Start) -->
+    <color name="btn_menu">#37474F</color>
+</resources>
