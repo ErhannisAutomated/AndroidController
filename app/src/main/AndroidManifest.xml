@@ -11,6 +11,14 @@
     <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" />
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
 
+    <!-- Foreground service (required to keep HID alive in background) -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <!-- API 34+ requires the specific foreground service type -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_CONNECTED_DEVICE" />
+
+    <!-- Notification permission for the persistent service notification (Android 13+) -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
     <uses-feature android:name="android.hardware.bluetooth" android:required="true" />
 
     <application
@@ -31,6 +39,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!--
+            foregroundServiceType="connectedDevice" is required on API 34+
+            for services that use Bluetooth while in the background.
+        -->
+        <service
+            android:name=".BluetoothHidService"
+            android:exported="false"
+            android:foregroundServiceType="connectedDevice" />
 
     </application>
 
