@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Landscape-only controller layout.
+
+    Left  side  : D-pad (digital cross)
+    Centre       : L1/R1 shoulder row, status text, Back / Start
+    Right side   : face-button diamond (A B X Y)
+    Top corners  : L2 / R2 trigger buttons
+
+    All IDs referenced here must match the property names in MainActivity.wireButtons().
+-->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_dark"
+    android:keepScreenOn="true">
+
+    <!-- ══ TOP TRIGGER ROW ══════════════════════════════════════════════════ -->
+
+    <Button
+        android:id="@+id/btnLt"
+        style="@style/Widget.AndroidController.TriggerButton"
+        android:layout_width="80dp"
+        android:layout_height="44dp"
+        android:text="LT"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp" />
+
+    <Button
+        android:id="@+id/btnRt"
+        style="@style/Widget.AndroidController.TriggerButton"
+        android:layout_width="80dp"
+        android:layout_height="44dp"
+        android:text="RT"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp" />
+
+    <!-- ══ SHOULDER ROW ═════════════════════════════════════════════════════ -->
+
+    <Button
+        android:id="@+id/btnLb"
+        style="@style/Widget.AndroidController.ShoulderButton"
+        android:layout_width="80dp"
+        android:layout_height="44dp"
+        android:text="LB"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnLt"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp" />
+
+    <Button
+        android:id="@+id/btnRb"
+        style="@style/Widget.AndroidController.ShoulderButton"
+        android:layout_width="80dp"
+        android:layout_height="44dp"
+        android:text="RB"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnRt"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="4dp" />
+
+    <!-- ══ STATUS TEXT (centre-top) ═════════════════════════════════════════ -->
+
+    <TextView
+        android:id="@+id/tvStatus"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/text_primary"
+        android:textSize="12sp"
+        android:padding="4dp"
+        android:text="Initialising…"
+        app:layout_constraintStart_toEndOf="@id/btnLt"
+        app:layout_constraintEnd_toStartOf="@id/btnRt"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- ══ CONTROLLER CLUSTER (dims when disconnected) ══════════════════════ -->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/controllerLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvStatus"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <!-- ── D-PAD ────────────────────────────────────────────────────── -->
+
+        <!-- Up -->
+        <Button
+            android:id="@+id/btnDUp"
+            style="@style/Widget.AndroidController.DpadButton"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:text="▲"
+            app:layout_constraintStart_toStartOf="@id/btnDLeft"
+            app:layout_constraintEnd_toEndOf="@id/btnDRight"
+            app:layout_constraintBottom_toTopOf="@id/btnDLeft" />
+
+        <!-- Left -->
+        <Button
+            android:id="@+id/btnDLeft"
+            style="@style/Widget.AndroidController.DpadButton"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:text="◀"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="24dp"
+            android:layout_marginBottom="48dp" />
+
+        <!-- Centre spacer (no button — cosmetic only) -->
+        <View
+            android:id="@+id/dpadCentre"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:background="@color/dpad_center"
+            app:layout_constraintStart_toEndOf="@id/btnDLeft"
+            app:layout_constraintTop_toTopOf="@id/btnDLeft"
+            app:layout_constraintBottom_toBottomOf="@id/btnDLeft" />
+
+        <!-- Right -->
+        <Button
+            android:id="@+id/btnDRight"
+            style="@style/Widget.AndroidController.DpadButton"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:text="▶"
+            app:layout_constraintStart_toEndOf="@id/dpadCentre"
+            app:layout_constraintTop_toTopOf="@id/btnDLeft"
+            app:layout_constraintBottom_toBottomOf="@id/btnDLeft" />
+
+        <!-- Down -->
+        <Button
+            android:id="@+id/btnDDown"
+            style="@style/Widget.AndroidController.DpadButton"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:text="▼"
+            app:layout_constraintStart_toStartOf="@id/btnDLeft"
+            app:layout_constraintEnd_toEndOf="@id/btnDRight"
+            app:layout_constraintTop_toBottomOf="@id/btnDLeft" />
+
+        <!-- ── CENTRE BUTTONS ───────────────────────────────────────────── -->
+
+        <Button
+            android:id="@+id/btnBack"
+            style="@style/Widget.AndroidController.MenuButton"
+            android:layout_width="52dp"
+            android:layout_height="36dp"
+            android:text="☰"
+            android:layout_marginEnd="12dp"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btnStart" />
+
+        <Button
+            android:id="@+id/btnStart"
+            style="@style/Widget.AndroidController.MenuButton"
+            android:layout_width="52dp"
+            android:layout_height="36dp"
+            android:text="▶"
+            android:layout_marginStart="12dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btnBack"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- ── FACE BUTTONS (diamond) ───────────────────────────────────── -->
+
+        <!-- Y (top) -->
+        <Button
+            android:id="@+id/btnY"
+            style="@style/Widget.AndroidController.FaceButton"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:text="Y"
+            android:backgroundTint="@color/btn_y"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/btnA"
+            app:layout_constraintBottom_toTopOf="@id/btnX" />
+
+        <!-- X (left) -->
+        <Button
+            android:id="@+id/btnX"
+            style="@style/Widget.AndroidController.FaceButton"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:text="X"
+            android:backgroundTint="@color/btn_x"
+            app:layout_constraintEnd_toStartOf="@id/btnA"
+            app:layout_constraintTop_toTopOf="@id/btnA"
+            app:layout_constraintBottom_toBottomOf="@id/btnA" />
+
+        <!-- A (centre-right — the primary button) -->
+        <Button
+            android:id="@+id/btnA"
+            style="@style/Widget.AndroidController.FaceButton"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:text="A"
+            android:backgroundTint="@color/btn_a"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="32dp" />
+
+        <!-- B (right) -->
+        <Button
+            android:id="@+id/btnB"
+            style="@style/Widget.AndroidController.FaceButton"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:text="B"
+            android:backgroundTint="@color/btn_b"
+            app:layout_constraintStart_toEndOf="@id/btnA"
+            app:layout_constraintTop_toTopOf="@id/btnA"
+            app:layout_constraintBottom_toBottomOf="@id/btnA" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

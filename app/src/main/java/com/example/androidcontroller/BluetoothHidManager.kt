@@ -5,6 +5,8 @@ import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothHidDevice
 import android.bluetooth.BluetoothHidDevice.Callback
+import android.bluetooth.BluetoothHidDeviceAppQosSettings
+import android.bluetooth.BluetoothHidDeviceAppSdpSettings
 import android.bluetooth.BluetoothProfile
 import android.content.Context
 import android.util.Log
@@ -76,23 +78,22 @@ class BluetoothHidManager(
             val hid = proxy as BluetoothHidDevice
             hidDevice = hid
 
-            val sdp = BluetoothHidDevice.SdpSettings(
+            val sdp = BluetoothHidDeviceAppSdpSettings(
                 ControllerConfig.deviceName,
                 ControllerConfig.deviceDescription,
                 ControllerConfig.deviceProvider,
                 ControllerConfig.subclass1,
-                ControllerConfig.subclass2,
                 ControllerConfig.hidDescriptor,
             )
 
             // QosSettings: service type BEST_EFFORT, sensible defaults
-            val qos = BluetoothHidDevice.QosSettings(
-                BluetoothHidDevice.QosSettings.SERVICE_BEST_EFFORT,
+            val qos = BluetoothHidDeviceAppQosSettings(
+                BluetoothHidDeviceAppQosSettings.SERVICE_BEST_EFFORT,
                 800,    // token rate (bytes/s)
                 9,      // token bucket size
                 0,      // peak bandwidth (0 = don't care)
                 11250,  // latency (µs)
-                BluetoothHidDevice.QosSettings.MAX_SDU_SIZE,
+                BluetoothHidDeviceAppQosSettings.MAX,
             )
 
             val registered = hid.registerApp(sdp, qos, qos, executor, hidCallback)
